@@ -224,7 +224,7 @@ For ROOT, we are working on an ecosystem to improve versioning and binary distri
 \end{listing}
 
 
-One of the main challenges is to define the package granularity; best practices here remain an open question.  Too large of components in packages defeats the purpose of modularization. Similarly, packages should not contain too many small components as this may introduce significant package management overhead.
+One of the main challenges is to define the package granularity; best practices here remain an open question.  Too large number of components in packages defeats the purpose of modularization. Similarly, packages should not contain too many small components as this may introduce significant package management overhead.
 
 A first ROOT package to define is \textit{ROOT Base}, which includes cling (the C++ interpreter), ROOT I/O, and other `Core' components.  \textit{ROOT Base} is a fundamental part from which we start to modularize ROOT framework. Another example of a ROOT package would be a  \textit{ROOTMath} package that consists of multiple  \textit{math} related components, such as ROOT libraries MathCore, MathMore and VecCore (see Listing \ref{manifest}). % Combination of components depends on package vendor.
 
@@ -256,11 +256,11 @@ Entities who may interact with manifest files may include:
 
 \section{Package manager design prototype}
 
-As a part of planning on package manager design was allocated three different area for the improvements: ROOT Base package as a fundamental part of ROOT from which we start to modularize ROOT framework, "lazy-install" service for ROOT build system and development of ROOT package management tool.
+As a part of the package manager prototype was defined two different future work areas: ROOT Base package as a fundamental part of ROOT, and development of ROOT package management tool.
 
 \subsection{Evolving “Minimal ROOT” to “ROOT Base”}
 
-While generating of the ROOT libraries dependency graph, we can quickly notice it is hard to visually see a small core of ROOT as desired for our ROOT Base package. % We need to start to work on modularization of a ROOT package from the bottom to the top, trying to build new ROOT modular system step by step.
+While generating the ROOT libraries dependency graph, we can quickly notice that it is hard to visualize a small core of ROOT as desired for our ROOT Base package. % We need to start to work on modularization of a ROOT package from the bottom to the top, trying to build new ROOT modular system step by step.
 
 ROOT's build system provides a “minimal ROOT” option that is supposed to build only the essential functionality of ROOT required for basic I/O operations. At the outset of this project, nearly fifty components were built when this \textit{minimal} option was enabled; we believe that “Minimal ROOT” has migrated away from its original goal of being only a \textit{core-like} ROOT. We have worked to trim the minimal build down include three components, Core, I/O, and Cling libraries, and the smallest number dependencies required.
 
@@ -295,7 +295,7 @@ ROOT implicit C++ modules solve the limitation that the ROOT compiled header (PC
 
 \subsubsection{Requirements for the ROOT package manager}
 
-The ROOT package manage should satisfy a set of functionality requirements expected by ROOT users. That includes more comprehensive sets of operations with the manifest files, sanity checks of the content of the manifest files, and execution commands. At the current stage of research, it is essential to define minimum requirements for functionality of the package manager, definitions of entities (such as  a component and package), and the format of the manifest file. 
+The ROOT package manager should satisfy a set of functionality requirements expected by ROOT users. That includes more comprehensive sets of operations with the manifest files, sanity checks of the content of the manifest files, and execution commands. At the current stage of research, it is essential to define minimum requirements for functionality of the package manager, definitions of entities (such as  a component and package), and the format of the manifest file. 
 
 For our purposes, the minimal requirement for the ROOT package manager is to be able to define and resolve dependencies and versions through the manifest of the package. These should be done either for ROOT packages or its external dependencies. 
 
